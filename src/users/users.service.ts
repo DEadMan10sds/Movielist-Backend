@@ -44,6 +44,14 @@ export class UsersService {
     return existsUser;
   }
 
+  async findOneBy(key: string, value: string | number) {
+    const findedUser = await this.userRepository.findOne({ [key]: value });
+
+    if (!findedUser) throw new BadRequestException('No existe el usuario');
+
+    return findedUser;
+  }
+
   findAll() {
     return `This action returns all users`;
   }
