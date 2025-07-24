@@ -23,7 +23,7 @@ export class UserRoleGuard implements CanActivate {
       context.getHandler(),
     );
 
-    if (!validRoles || validRoles.length) return true;
+    if (!validRoles || !validRoles.length) return true;
 
     const request: Request = context.switchToHttp().getRequest();
     const user = request.user as User;
