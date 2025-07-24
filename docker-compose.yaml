@@ -11,3 +11,13 @@ services:
       - POSTGRES_DB=${DB_NAME}
     volumes:
       - ./postgres:/var/lib/postgresql/data
+  backend:
+    depends_on:
+      - database
+    container_name: movielist-backend
+    env_file: ./.env
+    ports:
+      - '3010:${PORT}'
+    build:
+      context: .
+      dockerfile: Dockerfile
