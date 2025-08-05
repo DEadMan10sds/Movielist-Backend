@@ -10,8 +10,6 @@ import {
 import { MoviesService } from './movies.service';
 import { CreateMovieDto } from './dto/create-movie.dto';
 import { UpdateMovieDto } from './dto/update-movie.dto';
-import { GetUser } from 'src/auth/decorators/get-user.decorator';
-import { User } from 'src/users/entities/user.entity';
 import { Auth } from 'src/auth/decorators/auth.decorator';
 
 @Auth()
@@ -20,9 +18,8 @@ export class MoviesController {
   constructor(private readonly moviesService: MoviesService) {}
 
   @Post()
-  create(@Body() createMovieDto: CreateMovieDto, @GetUser() user: User) {
-    console.log(user);
-    return this.moviesService.create(createMovieDto, user);
+  create(@Body() createMovieDto: CreateMovieDto) {
+    return this.moviesService.create(createMovieDto);
   }
 
   @Get()
