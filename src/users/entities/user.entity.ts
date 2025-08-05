@@ -1,9 +1,7 @@
-import { Movie } from 'src/movies/entities/movie.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
-  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -36,9 +34,6 @@ export class User {
     default: true,
   })
   isActive: boolean;
-
-  @OneToMany(() => Movie, (movie) => movie.User)
-  Movies: Movie[];
 
   @CreateDateColumn({
     type: 'timestamp',

@@ -1,5 +1,4 @@
-import { User } from 'src/users/entities/user.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'Movies' })
 export class Movie {
@@ -16,7 +15,4 @@ export class Movie {
     default: true,
   })
   isActive: boolean;
-
-  @ManyToOne(() => User, (user) => user.Movies)
-  User: User;
 }
